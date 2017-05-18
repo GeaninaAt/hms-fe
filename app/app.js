@@ -6,6 +6,7 @@ angular.module('myApp', [
     'myApp.login',
     'myApp.home',
     'myApp.quiz',
+    'myApp.register',
     'ui.bootstrap',
     'ngCookies'
 

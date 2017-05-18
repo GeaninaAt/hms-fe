@@ -1,4 +1,12 @@
 /* app css stylesheet */
+#paddingLoginSuccess{
+    margin-top:50px;
+
+}
+
+#paddingLoginFailure{
+    margin-top:50px;
+}
 
 .login2background {
     background-image: url("components/images/education2.png");

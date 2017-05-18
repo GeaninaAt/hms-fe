@@ -9,6 +9,7 @@ angular.module('myApp.quiz', ['ngRoute'])
     });
 }])
 
-.controller('quizController', [function() {
+.controller('quizController', ['$scope', function($scope) {
+
 
 }]);
