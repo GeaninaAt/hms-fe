@@ -9,7 +9,7 @@ angular.module('myApp.login', ['ngRoute'])
     });
 }])
 
-.controller('loginController', ['$rootScope', '$scope', '$http', 'loginFactory', '$location', function($scope, $http, loginFactory, $location, $rootScope) {
+.controller('loginController', ['$scope', '$http', 'loginFactory', '$location','$rootScope', function($scope, $http, loginFactory, $location, $rootScope) {
     $scope.login = function(username, password){
         loginFactory.login(username, password).then(function(response){
             switch(response.status){

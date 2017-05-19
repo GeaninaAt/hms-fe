@@ -42,13 +42,13 @@
         <strong>Success!</strong> Indicates a successful or positive action.
     </div>-->
 
-    <div class="alert alert-danger alert-dismissable col-sm-4 col-sm-offset-4" id="paddingLoginFailure" ng-show="failedLogin">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+    <div class="alert alert-danger alert-dismissable col-sm-4 col-sm-offset-4" id="paddingLoginFailure" ng-show="failedLogin == true">
+        <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
         <strong>Failure!</strong> Username or password is incorrect!
     </div>
 
-    <div class="alert alert-success alert-dismissable col-sm-4 col-sm-offset-4" id="paddingLoginSuccess" ng-show="successfulRegister">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+    <div class="alert alert-success alert-dismissable col-sm-4 col-sm-offset-4" id="paddingLoginSuccess" ng-show="successfulRegister == true">
+        <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
         <strong>Success!</strong> Your account was successfully created!
     </div>
 </body>

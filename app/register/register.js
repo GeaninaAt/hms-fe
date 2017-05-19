@@ -14,6 +14,7 @@ angular.module('myApp.register', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
 
     .controller('registerController', ['$rootScope', '$scope', '$http', '$location', 'registerFactory', function($rootScope, $scope, $http, $location, registerFactory) {
 
+        $rootScope.failedLogin = false;
         $scope.register = function(firstName, lastName, birthdate, country, email, phone, username, password){
             if ($scope.registerForm.$pristine || $scope.registerForm.$invalid) {
                 alert("form invalid!");

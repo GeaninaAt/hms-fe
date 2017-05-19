@@ -9,6 +9,10 @@ angular.module('myApp.home', ['ngRoute'])
     });
 }])
 
-.controller('homeController', [function() {
+.controller('homeController', [ '$scope', '$location', function($scope, $location) {
+
+    $scope.takeQuiz = function(type){
+            $location.path('/quiz').search({ quizType: type });
+        }
 
 }]);
