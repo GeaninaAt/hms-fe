@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Question </label>
                     <div class="col-md-4">
-                        <input id="textinput" ng-model="questionName" name="textinput" placeholder="Question" class="form-control input-md" required type="text">
+                        <input id="textinput" ng-model="questionText" name="textinput" placeholder="Question" class="form-control input-md" required type="text">
                         <span class="help-block"> </span>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="col-md-4">
                         <label for="sel3">Select value:</label>
                         <select class="form-control" id="sel3" ng-model="category" required>
-                            <option ng-repeat="category in ['OTHER','MUSIC','THEATRE','SPORTS','TECHNOLOGY'] track by $index">{{category}}</option>
+                            <option ng-repeat="category in ['GERMAN', 'SPANISH', 'DUTCH'] track by $index">{{category}}</option>
                         </select>
                     </div>
                 </div>

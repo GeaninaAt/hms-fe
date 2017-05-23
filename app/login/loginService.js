@@ -13,6 +13,7 @@ angular.module('myApp.login')
 
 
             return $http.post(url).then(function(response) {
+                $cookies.put("userRole", response.data.roles[0]);
                 return response;
 
             }, function(err) {

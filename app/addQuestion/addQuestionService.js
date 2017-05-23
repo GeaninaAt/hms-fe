@@ -3,11 +3,11 @@
  */
 'use strict';
 
-angular.module('myApp.addEvent')
+angular.module('myApp.addQuestion')
 
-    .factory("addEventFactory", ["$rootScope", "$http", "$cookies", "$location", function($rootScope, $http, $cookies, $location) {
+    .factory("addQuestionFactory", ["$rootScope", "$http", "$cookies", "$location", function($rootScope, $http, $cookies, $location) {
 
-        //get Locations http call
+/*        //get Locations http call
         var getLocations = function() {
             var url = 'http://localhost:8080/rest/locations';
             var config = {
@@ -34,19 +34,19 @@ angular.module('myApp.addEvent')
                 return response.data;
 
             })
-        }
+        }*/
 
-        //add Event http call
-        var addEvent = function(eventData) {
-            var url = 'http://localhost:8080/rest/events';
-            console.log(eventData);
+        //add Question http call
+        var addQuestion = function(questionData) {
+            var url = 'http://localhost:8080/admin/addQuestion/' + response.data.id; //?
+            console.log(questionData);
             //we have to change this
-            var config = {
+/*            var config = {
                 headers: {
                     "Authorization": "Bearer " + $cookies.get("userToken")
                 }
-            }
-            return $http.post(url, eventData, config).then(
+            }*/
+            return $http.post(url, questionData).then(
                 function(response) {
                     return response
                 },
@@ -56,8 +56,6 @@ angular.module('myApp.addEvent')
         }
 
         return {
-            getLocations: getLocations,
-            getOrganizers: getOrganizers,
-            addEvent: addEvent
+            addQuestion: addQuestion
         }
     }])
