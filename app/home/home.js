@@ -11,7 +11,7 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
 
 .controller('homeController', [ '$scope', '$location', '$cookies', function($scope, $location, $cookies) {
 
-    $scope.takeQuiz = function(type){
+   /* $scope.takeQuiz = function(type){
             $location.path('/quiz').search({ quizType: type });
         }
 
@@ -20,5 +20,21 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
 
     $scope.adminAdd = function(){
         $location.path('/admin')
+    }*/
+
+   $scope.goToEmergencies = function() {
+       $location.path('/emergencies');
+   }
+
+    $scope.goToNeurology = function() {
+        $location.path('/neurology');
+    }
+
+    $scope.goToUrology = function() {
+        $location.path('/urology');
+    }
+
+    $scope.goToCardiology = function() {
+        $location.path('/cardiology');
     }
 }]);

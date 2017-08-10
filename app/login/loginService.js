@@ -9,11 +9,14 @@ angular.module('myApp.login')
 
 
         var login = function(username, password) {
-            var url = "http://localhost:8080/home/authenticate?username=" + username + "&password=" + password;
-
-
-            return $http.post(url).then(function(response) {
-                $cookies.put("userRole", response.data.roles[0]);
+            var url = "http://localhost:8080/login";
+            var base64Credentials = btoa(username + ':' + password);
+            var config = {headers: {
+                'Authorization': 'Basic ' + base64Credentials
+            }
+            };
+            return $http.get(url, config).then(function(response) {
+                $cookies.put("userRole", response.data.role);
                 return response;
 
             }, function(err) {

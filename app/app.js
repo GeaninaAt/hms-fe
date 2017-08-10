@@ -8,6 +8,10 @@ angular.module('myApp', [
     'myApp.quiz',
     'myApp.admin',
     'myApp.register',
+    'myApp.emergencies',
+    'myApp.neurology',
+    'myApp.urology',
+    'myApp.cardiology',
     'ui.bootstrap',
     'ngCookies'
 

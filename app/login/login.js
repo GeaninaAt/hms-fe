@@ -23,7 +23,7 @@ angular.module('myApp.login', ['ngRoute', 'ngCookies'])
                     break;
                 default:
                     $rootScope.failedLogin = true;
-                    alert("some error occured during the authentication");
+                    alert("Some error occured during the authentication");
             }
         })
     }
