@@ -38,7 +38,15 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
         $location.path('/cardiology');
     }
 
-    $scope.goToAdmitPatient = function() {
-       $location.path('/admitPatient');
+    $scope.goToAddPatient = function() {
+       $location.path('/addPatient');
+    }
+
+    $scope.goToAddDoctor = function() {
+       $location.path('/addDoctor');
+    }
+
+    $scope.goToUnadmittedPatients = function() {
+       $location.path('/unadmittedPatients');
     }
 }]);

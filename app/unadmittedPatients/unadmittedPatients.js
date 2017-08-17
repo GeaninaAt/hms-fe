@@ -1,18 +1,18 @@
 /**
- * Created by gatomulesei on 8/10/2017.
+ * Created by gatomulesei on 8/14/2017.
  */
 'use strict';
 
-angular.module('myApp.neurology', ['ngRoute', 'ngCookies'])
+angular.module('myApp.unadmittedPatients', ['ngRoute', 'ngCookies'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/neurology', {
-            templateUrl: 'neurology/neurology.html',
-            controller: 'neurologyController'
+        $routeProvider.when('/unadmittedPatients', {
+            templateUrl: 'unadmittedPatients/unadmittedPatients.html',
+            controller: 'unadmittedPatientsController'
         });
     }])
 
-    .controller('neurologyController', [ '$scope', '$location', '$cookies', function($scope, $location, $cookies) {
+    .controller('unadmittedPatientsController', [ '$scope', '$location', '$cookies', function($scope, $location, $cookies) {
 
         /* $scope.takeQuiz = function(type){
          $location.path('/quiz').search({ quizType: type });
@@ -25,7 +25,7 @@ angular.module('myApp.neurology', ['ngRoute', 'ngCookies'])
          $location.path('/admin')
          }*/
 
-        $scope.goToHome = function(){
+        $scope.goToHome = function() {
             $location.path('/home');
         }
 

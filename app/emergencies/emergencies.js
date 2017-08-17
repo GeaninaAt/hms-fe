@@ -9,20 +9,42 @@ angular.module('myApp.emergencies', ['ngRoute', 'ngCookies'])
         });
     }])
 
-    .controller('emergenciesController', [ '$scope', '$location', '$cookies', function($scope, $location, $cookies) {
+    .controller('emergenciesController', [ '$scope', '$location', '$cookies', 'emergenciesFactory', function($scope, $location, $cookies, emergenciesFactory) {
+        var depType = $location.search().depType;
+        /*$scope.answersList = [];
+        $scope.questionsIds = [];
+        console.log(quizType);*/
+        quizFactory.getQuiz(quizType).then(function(response){{
+            // console.log("questions")
+            //console.log(response);
+            $scope.questions = response.data.questions;
+            $scope.answers = response.data.questions.answers;
+            $scope.quizId = response.data.id;
+            quizFactory.getComments($scope.quizId).then(function(response){
+                console.log(response);
+                $scope.comments = response.data;
+            })
+        }})
 
-        /* $scope.takeQuiz = function(type){
-         $location.path('/quiz').search({ quizType: type });
-         }
-
-         $scope.userRole = $cookies.get("userRole");
-         console.log($scope.userRole);
-
-         $scope.adminAdd = function(){
-         $location.path('/admin')
-         }*/
-
-        $scope.goToHome = function(){
+        $scope.goToHome = function() {
             $location.path('/home');
         }
+
+        $scope.goToAddPatient = function() {
+            $location.path('/addPatient');
+        }
+
+        $scope.goToAddDoctor = function() {
+            $location.path('/addDoctor');
+        }
+
+        $scope.goToPatientPage = function() {
+            $location.path('/patientPage');
+        }
+
+        $scope.goToUnadmittedPatients = function() {
+            $location.path('/unadmittedPatients');
+        }
+
+
     }]);

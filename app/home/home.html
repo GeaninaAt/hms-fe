@@ -24,16 +24,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="app/index.html"><img src="components/img/logo.png" alt="logo"/></a>
+                    <a class="navbar-brand" href=""><img src="components/img/logo.png" alt="logo"/></a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="">Home</a></li>
-                        <li><a href="" ng-click="goToAdmitPatient()">Admit Patient</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li class="active" ng-click="goToHome()"><a href="">Home</a></li>
+                        <li><a href="" ng-click="goToAddPatient()">Add Patient</a></li>
+                        <li><a href="" ng-click="goToAddDoctor()">Add Doctor</a></li>
+                        <!--<li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>-->
+                        <li><a href="" ng-click="goToUnadmittedPatients()">Unadmitted Patients</a></li>
                     </ul>
                 </div>
             </div>
