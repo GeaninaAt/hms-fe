@@ -53,9 +53,9 @@ angular.module('myApp.addPatient')
                 function(err) {
                     console.log(err);
                 })
-        }
+        };
 
         return {
             addPatient: addPatient
         }
-    }])
+    }]);

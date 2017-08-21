@@ -12,18 +12,13 @@ angular.module('myApp.unadmittedPatients', ['ngRoute', 'ngCookies'])
         });
     }])
 
-    .controller('unadmittedPatientsController', [ '$scope', '$location', '$cookies', function($scope, $location, $cookies) {
+    .controller('unadmittedPatientsController', [ '$scope', '$location', '$cookies', 'unadmittedPatientsFactory', function($scope, $location, $cookies, unadmittedPatientsFactory) {
 
-        /* $scope.takeQuiz = function(type){
-         $location.path('/quiz').search({ quizType: type });
-         }
+        unadmittedPatientsFactory.getUnadmittedPatients().then(function(response){
+            console.log(response);
+            $scope.unadmittedPatients = response.data;
+        });
 
-         $scope.userRole = $cookies.get("userRole");
-         console.log($scope.userRole);
-
-         $scope.adminAdd = function(){
-         $location.path('/admin')
-         }*/
 
         $scope.goToHome = function() {
             $location.path('/home');
@@ -44,4 +39,5 @@ angular.module('myApp.unadmittedPatients', ['ngRoute', 'ngCookies'])
         $scope.goToUnadmittedPatients = function() {
             $location.path('/unadmittedPatients');
         }
+
     }]);

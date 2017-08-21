@@ -65,7 +65,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="pageTitle">Patient Name</h2>
+                    <h2 class="pageTitle">{{currentPatient.firstName}} {{currentPatient.lastName}}</h2>
                 </div>
             </div>
         </div>
@@ -79,31 +79,31 @@
                     <div class="col-md-12">
                         <div class="about-logo">
                             <h4>First Name:</h4>
-                            <p>name</p>
+                            <p>{{currentPatient.firstName}}</p>
                             <br>
                             <h4>Last Name:</h4>
-                            <p>lname</p>
+                            <p>{{currentPatient.lastName}}</p>
                             <br>
                             <h4>CNP:</h4>
-                            <p>3462654654</p>
+                            <p>{{currentPatient.cnp}}</p>
                             <br>
                             <h4>Birth Date:</h4>
-                            <p>54-554-4443</p>
+                            <p>{{currentPatient.dateOfBirth}}</p>
                             <br>
                             <h4>Email:</h4>
-                            <p>patient@mail.com</p>
+                            <p>{{currentPatient.email}}</p>
                             <br>
                             <h4>Phone number:</h4>
-                            <p>345634634625</p>
+                            <p>{{currentPatient.phoneNumber}}</p>
                             <br>
                             <h4>Blood Type:</h4>
-                            <p>O+</p>
+                            <p>{{currentPatient.bloodType}}</p>
                             <br>
-                            <h4>Diagnosis:</h4>
+                            <!--<h4>Diagnosis:</h4>
                             <p>diaree</p>
-                            <br>
+                            <br>-->
                             <h4>Other Information:</h4>
-                            <p>lndfeswjdaskjd mnas dklijasfkdHASFIHJew ewfewfnhewueiwf ew few;uihf8hewfdsunf dasfk.jasdnkludhsfpiahsdhf asdfdas fhafiasbdf das fdyisbfdsbfdas fbnads fylausbdoyfuagsdyfigdlasiygfdlasgfadhsfbgdasdsf das fdnas fbdsvfljydgasyfudgasf dasfdasbflyudasgfyuadsbf dasfdshfbdasyufgdasf sdame</p>
+                            <p>{{currentPatient.otherInfo}}</p>
                             <br>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                     </div>
 
                 <a href="" class="btn btn-color" ng-click="goToAdmitPatient()">Admit Patient</a>
-                <a href="" class="btn btn-color">Edit Patient Info</a>
+                <a href="" class="btn btn-color" ng-click="goToEditPatient()">Edit Patient Info</a>
                 </div>
 
                 <hr>

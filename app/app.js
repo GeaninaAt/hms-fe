@@ -17,6 +17,7 @@ angular.module('myApp', [
     'myApp.patientPage',
     'myApp.admitPatient',
     'myApp.unadmittedPatients',
+    'myApp.editPatient',
     'ui.bootstrap',
     'ngCookies'
 

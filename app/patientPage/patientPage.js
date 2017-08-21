@@ -12,18 +12,27 @@ angular.module('myApp.patientPage', ['ngRoute', 'ngCookies'])
         });
     }])
 
-    .controller('patientPageController', [ '$scope', '$location', '$cookies', function($scope, $location, $cookies) {
+    .controller('patientPageController', [ '$scope', '$location', '$cookies', 'patientPageFactory', function($scope, $location, $cookies, patientPageFactory) {
 
-        /* $scope.takeQuiz = function(type){
-         $location.path('/quiz').search({ quizType: type });
-         }
 
-         $scope.userRole = $cookies.get("userRole");
-         console.log($scope.userRole);
+        if($location.search().idPatient){
+            var requestId = {
+                patientId: $location.search().idPatient
+            };
+            patientPageFactory.getPatient(requestId.patientId).then(function(response){
+                $scope.currentPatient = response.data;
+            });
+        }else if($location.search().idDoctor){
+            var requestId = {
+                doctorId: $location.search().idDoctor
+            };
+            patientPageFactory.getDoctors(requestId.doctorId).then(function(response){
+                $scope.currentPatient = response.data;
+            });
+        }else{
+            alert("some other error");
+        }
 
-         $scope.adminAdd = function(){
-         $location.path('/admin')
-         }*/
 
         $scope.goToHome = function(){
             $location.path('/home');
@@ -36,4 +45,11 @@ angular.module('myApp.patientPage', ['ngRoute', 'ngCookies'])
         $scope.goToUnadmittedPatients = function() {
             $location.path('/unadmittedPatients');
         }
+
+        $scope.goToEditPatient = function() {
+            $location.path('/editPatient');
+        }
+
+
+
     }]);

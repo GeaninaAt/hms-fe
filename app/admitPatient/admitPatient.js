@@ -12,26 +12,102 @@ angular.module('myApp.admitPatient', ['ngRoute', 'ngCookies'])
         });
     }])
 
-    .controller('admitPatientController', [ '$scope', '$location', '$cookies', function($scope, $location, $cookies) {
+    .controller('admitPatientController', [ '$scope', '$location', '$cookies', 'admitPatientFactory', function($scope, $location, $cookies, admitPatientFactory) {
 
-        /* $scope.takeQuiz = function(type){
-         $location.path('/quiz').search({ quizType: type });
-         }
 
-         $scope.userRole = $cookies.get("userRole");
-         console.log($scope.userRole);
+        $scope.departments = [
+            {
+                name:"Emergencies"
+            },
+            {
+                name:"Neurology"
+            },
+            {
+                name:"Urology"
+            },
+            {
+                name:"Neurology"
+            }
+        ];
 
-         $scope.adminAdd = function(){
-         $location.path('/admin')
-         }*/
+
+        $scope.abcd = function() {
+            alert("jdhsg")
+        }
+
+        $scope.setDoctorForDep = function(department) {
+            console.log(department);
+          $scope.selectedDep = department;
+            admitPatientFactory.getDoctors($scope.selectedDep).then(function(response) {
+                $scope.doctorModel = [];
+                //alert(JSON.stringify(response));
+                $scope.doctors = response.data;
+                for(var i in $scope.doctors) {
+                    $scope.doctorModel.push({
+                        "doctorId":$scope.doctors[i].id,
+                        "firstName": $scope.doctors[i].firstName,
+                        "lastName": $scope.doctors[i].lastName
+                    })
+                }
+                console.log($scope.doctorModel);
+            });
+
+            admitPatientFactory.getBeds($scope.selectedDep).then(function(response) {
+                $scope.bedModel = [];
+                //alert(JSON.stringify(response));
+                $scope.beds = response.data;
+                for(var i in $scope.beds) {
+                    //console.log($scope.beds);
+                    $scope.bedModel.push({
+                        "bedId": $scope.beds[i].id,
+                        "bedNo": $scope.beds[i].number,
+                        "roomCode": $scope.beds[i].room.code
+                    })
+                }
+                //console.log($scope.bedModel);
+            });
+        };
+        $scope.admitPatient = function() {
+           alert($scope.currentDoctor);
+            //return;
+            $scope.admittedPatient = false;
+            $scope.invalidPatientForm = false;
+            var admissionObject = {
+                /*"department": $scope.currentDep,
+                "doctor": $scope.currentDoctor,
+                "bed": $scope.currentBed,*/
+                "diagnosis": $scope.diagnosis,
+                "treatmentInfo": $scope.treatmentInfo,
+                "dischargeDate": $scope.dischargeDate
+            };
+
+            if ($scope.admitPatientForm.$pristine || $scope.admitPatientForm.$invalid) {
+                $scope.invalidQuestionForm = true;
+                $scope.addedQuestion = false;
+            } else {
+                admitPatientFactory.admitPatient(admissionObject).then(
+                    function(responseSuccess) {
+                        console.log(responseSuccess);
+                        $scope.admittedPatient = true;
+                        $scope.invalidPatientForm = false;
+                        $scope.addPatientForm.$setPristine();
+                    },
+                    function(responseError) {
+                        $scope.admittedPatient = false;
+                        $scope.invalidPatientForm = false;
+                    }
+                );
+            }
+        }
+
 
         $scope.goToHome = function(){
             $location.path('/home');
-        }
+        };
 
         $scope.goToUnadmittedPatients = function() {
             $location.path('/unadmittedPatients');
-        }
+        };
 
         $scope.today = function() {
             $scope.dt = new Date();
@@ -119,5 +195,10 @@ angular.module('myApp.admitPatient', ['ngRoute', 'ngCookies'])
             }
 
             return '';
+        }
+
+
+        $scope.getDoctors = function(department) {
+
         }
     }]);
