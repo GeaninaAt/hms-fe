@@ -15,41 +15,54 @@ angular.module('myApp.patientPage', ['ngRoute', 'ngCookies'])
     .controller('patientPageController', [ '$scope', '$location', '$cookies', 'patientPageFactory', function($scope, $location, $cookies, patientPageFactory) {
 
 
-        if($location.search().idPatient){
+        if ($location.search().idPatient) {
             var requestId = {
                 patientId: $location.search().idPatient
             };
-            patientPageFactory.getPatient(requestId.patientId).then(function(response){
+            patientPageFactory.getPatient(requestId.patientId).then(function (response) {
                 $scope.currentPatient = response.data;
             });
-        }else if($location.search().idDoctor){
+        } else if ($location.search().idDoctor) {
             var requestId = {
                 doctorId: $location.search().idDoctor
             };
-            patientPageFactory.getDoctors(requestId.doctorId).then(function(response){
+            patientPageFactory.getDoctors(requestId.doctorId).then(function (response) {
                 $scope.currentPatient = response.data;
             });
-        }else{
+        } else {
             alert("some other error");
         }
 
+        $scope.hideAdmit = function () {
+            return $scope.currentPatient.admitted;
+        }
 
-        $scope.goToHome = function(){
+
+        $scope.goToHome = function () {
             $location.path('/home');
         }
 
-        $scope.goToAdmitPatient = function() {
+        $scope.goToAdmitPatient = function () {
             $location.path('/admitPatient');
         }
 
-        $scope.goToUnadmittedPatients = function() {
+        $scope.goToUnadmittedPatients = function () {
             $location.path('/unadmittedPatients');
         }
 
-        $scope.goToEditPatient = function() {
+        $scope.goToEditPatient = function () {
             $location.path('/editPatient');
         }
 
+        $scope.goToAddExamination = function () {
+            $location.path('/addExamination');
+        }
 
+        $scope.goToSeeAdmissions = function () {
+            $location.path('/admissionsPage');
+        }
 
+        $scope.goToCreateAccount = function() {
+            $location.path('/createAccount');
+        }
     }]);

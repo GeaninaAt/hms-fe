@@ -40,7 +40,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="emergencies.html"><img src="components/img/logo.png" alt="logo"/></a>
+                    <a class="navbar-brand" href=""><img src="components/img/logo.png" alt="logo"/></a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
@@ -58,7 +58,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="pageTitle">Emergencies Department</h2>
+                    <h2 class="pageTitle">Admissions</h2>
                 </div>
             </div>
         </div>
@@ -68,47 +68,38 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="portfolio-categ filter">
-                        <li ng-click="showPatients()" class="all active"><a href="">Patients</a></li>
-                        <li ng-click = "showDoctors()" class="web"><a href="" title="" >Doctors</a></li>
-                        <!--<li class="icon"><a href="" title="">Mobile App</a></li>
-                        <li class="graphic"><a href="" title="">UI design</a></li>-->
                     </ul>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+
 
                     <!-- Accordion starts -->
-                    <div class="panel-group" id="accordion-alt3">
-                        <!-- Panel. Use "panel-XXX" class for different colors. Replace "XXX" with color. -->
-                        <div class="panel" ng-repeat = "patient in patients" ng-show="listPatients==true">
-                            <!-- Panel heading -->
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-alt3" href="" ng-click="goToPatientPage({patientId:patient.id})">
-                                        <i class="fa fa-angle-right"></i> {{patient.firstName}} {{patient.lastName}}
-                                    </a>
-                                </h4>
+                    <div class="col-md-3" ng-repeat = "admission in admissions">
+                        <div class="pricing-box-item">
+                            <div class="pricing-heading">
+                                <!--<h4><strong>{{admission.id}}</strong></h4>-->
+                                <h4><strong>{{admission.admissionDate}} -> {{admission.dischargeDate}}</strong></h4>
+                            </div>
+                            <div class="pricing-terms">
+                                <h6>Active : {{admission.active}}</h6>
+                            </div>
+                            <div class="pricing-container">
+                                <ul>
+                                    <li><i class="icon-ok"></i> Department : {{admission.department.name}}</li>
+                                    <li><i class="icon-ok"></i> Doctor : {{admission.doctor.firstName}} {{admission.doctor.lastName}}</li>
+                                    <li><i class="icon-ok"></i> Bed Number : {{admission.bed.number}} - Room Code: {{admission.bed.room.code}}</li>
+                                    <li><i class="icon-ok"></i> Diagnosis : {{admission.diagnosis}}</li>
+                                    <li><i class="icon-ok"></i> Treatment Information : {{admission.treatmentInfo}}</li>
+                                </ul>
+                            </div>
+                            <div class="pricing-action">
+                                <a href="" ng-click="goToUpdateAdmission({admissionId: admission.id})" class="btn btn-medium btn-theme"><i class="icon-bolt"></i> Update</a>
+                                <a href="" ng-click="deleteAdmission(admission.id)" class="btn btn-medium btn-theme-del"><i class="icon-bolt"></i> Delete</a>
                             </div>
                         </div>
-
-                        <div class="panel" ng-repeat = "doctor in doctors" ng-show="listDoctors==true">
-                            <!-- Panel heading -->
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-alt3" href="" ng-click="goToPatientPage({doctorId: doctor.id})">
-                                        <i class="fa fa-angle-right"></i> {{doctor.firstName}} {{doctor.lastName}}
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-
-
                     </div>
-                    <!-- Accordion ends -->
+                        <!-- Accordion ends -->
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
     <footer>
         <div class="container">

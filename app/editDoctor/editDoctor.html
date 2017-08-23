@@ -2,16 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Medical Care Doctor Free HTML5 responsive Template | webthemez</title>
+    <title>Medical Care Responsive Bootstrap themes | webthemez</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="http://webthemez.com" />
-    <!-- css -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
-    <link href="css/jcarousel.css" rel="stylesheet" />
-    <link href="css/flexslider.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -21,13 +15,10 @@
 </head>
 <body>
 <div id="wrapper">
-
     <!-- start header -->
     <header>
         <section class="contactInfo">
             <div class="container">
-
-
                 <div class="col-md-12">
                     <div class="contact-area">
                         <ul>
@@ -64,65 +55,89 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="pageTitle">{{currentPatient.firstName}} {{currentPatient.lastName}}</h2>
+                    <h2 class="pageTitle">Update Doctor Information</h2>
                 </div>
             </div>
         </div>
     </section>
     <section id="content">
+
         <div class="container">
-
-            <div class="about">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="about-logo">
-                            <h4>First Name:</h4>
-                            <p>{{currentPatient.firstName}}</p>
-                            <br>
-                            <h4>Last Name:</h4>
-                            <p>{{currentPatient.lastName}}</p>
-                            <br>
-                            <h4>CNP:</h4>
-                            <p>{{currentPatient.cnp}}</p>
-                            <br>
-                            <h4>Birth Date:</h4>
-                            <p>{{currentPatient.dateOfBirth}}</p>
-                            <br>
-                            <h4>Email:</h4>
-                            <p>{{currentPatient.email}}</p>
-                            <br>
-                            <h4>Phone number:</h4>
-                            <p>{{currentPatient.phoneNumber}}</p>
-                            <br>
-                            <h4>Blood Type:</h4>
-                            <p>{{currentPatient.bloodType}}</p>
-                            <br>
-                            <!--<h4>Diagnosis:</h4>
-                            <p>diaree</p>
-                            <br>-->
-                            <h4>Other Information:</h4>
-                            <p>{{currentPatient.otherInfo}}</p>
-                            <br>
-                            </div>
-                        </div>
-                        <br>
-                        <br>
-
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do tempor.</p>
+                    <div class="alert alert-success hidden" id="contactSuccess">
+                        <strong>Success!</strong> Your message has been sent to us.
                     </div>
+                    <div class="alert alert-error hidden" id="contactError">
+                        <strong>Error!</strong> There was an error sending your message.
+                    </div>
+                    <div class="contact-form">
 
-                <a href="" class="btn btn-color" ng-click="goToAdmitPatient()" ng-hide="hideAdmit()">Admit Patient</a>
-                <a href="" class="btn btn-color" ng-click="goToEditPatient()">Edit Patient Info</a>
-                <a href="" class="btn btn-color" ng-click="goToAddExamination()">Program Examination</a>
-                <a href="" class="btn btn-color" ng-click="goToSeeAdmissions()">See Admissions</a>
+                        <form id="addPatientForm" name = "addPatientForm" role="form" novalidate="novalidate">
+                            <div class="form-group has-feedback">
+                                <label for="firstName">First Name*</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder={{currentDoctor.firstName}} ng-model="firstName">
+                                <i class="fa fa-user form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="lastName">Last Name*</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder={{currentDoctor.lastName}} ng-model="lastName">
+                                <i class="fa fa-user form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="cnp">CNP*</label>
+                                <input type="text" class="form-control" id="cnp" name="cnp" placeholder={{currentDoctor.cnp}} ng-model="cnp">
+                                <i class="fa fa-user form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="birthDate">Birth Date*</label>
+                                <input type="text" class="form-control" id="birthDate" name="birthDate" placeholder={{currentDoctor.birthDate}} uib-datepicker-popup="{{format}}" ng-model="dateOfBirth" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">
+                                <i class="fa fa-user form-control-feedback"></i>
+                                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder={{currentDoctor.email}} ng-model="email">
+                                <i class="fa fa-envelope form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder={{currentDoctor.phoneNumber}} ng-model="phoneNumber">
+                                <i class="fa fa-navicon form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="degree">Degree</label>
+                                <input type="text" class="form-control" id="degree" name="degree" placeholder={{currentDoctor.degree}} ng-model="degree">
+                                <i class="fa fa-navicon form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="position">Position</label>
+                                <input type="text" class="form-control" id="position" name="position" placeholder={{currentDoctor.position}} ng-model="position">
+                                <i class="fa fa-navicon form-control-feedback"></i>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="sel3">Department</label>
+                                <select class="form-control" id="sel3" ng-model="department" required>
+                                    <option ng-repeat="department in ['Emergencies', 'Neurology', 'Urology', 'Cardiology'] track by $index">{{department}}</option>
+                                </select>
+                                <i class="fa fa-navicon form-control-feedback"></i>
+                            </div>
+                            <input type="submit" ng-click="updateDoctor(firstName, lastName, cnp, dateOfBirth, email, phoneNumber, bloodType, otherInfo)" value="Submit" class="btn btn-default">
+                        </form>
+                        <br>
+                        <br>
+                        <div class="alert alert-success" ng-show="addedPatient == true">
+                            <strong>Success!</strong> The patient has been successfully added.
+                        </div>
+                        <div class="alert alert-warning" ng-show="invalidPatientForm == true">
+                            <strong>Warning!</strong> Please complete all fields.
+                        </div>
+                    </div>
                 </div>
-
-                <hr>
-                <br>
-
             </div>
-
         </div>
+
     </section>
     <footer>
         <div class="container">
@@ -212,5 +227,6 @@
 <script src="js/jquery.flexslider.js"></script>
 <script src="js/animate.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/validate.js"></script>
 </body>
 </html>

@@ -49,4 +49,8 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
     $scope.goToUnadmittedPatients = function() {
        $location.path('/unadmittedPatients');
     }
+
+    $scope.goToCreateAccount = function() {
+       $location.path('/createAccount');
+    }
 }]);

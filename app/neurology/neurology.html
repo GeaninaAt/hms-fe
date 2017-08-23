@@ -47,9 +47,8 @@
                         <li><a href="" ng-click="goToHome()">Home</a></li>
                         <li><a href="" ng-click="goToAddPatient()">Add Patient</a></li>
                         <li><a href="" ng-click="goToAddDoctor()">Add Doctor</a></li>
-                        <!--<li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>-->
                         <li><a href="" ng-click="goToUnadmittedPatients()">Unadmitted Patients</a></li>
+                        <li><a href="" ng-click="goToCreateAccount()">Create an account</a></li>
                     </ul>
                 </div>
             </div>
@@ -87,7 +86,7 @@
                             <!-- Panel heading -->
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-alt3" href="" ng-click="goToPatientPage()">
+                                    <a data-toggle="collapse" data-parent="#accordion-alt3" href="" ng-click="goToPatientPage({patientId:patient.id})">
                                         <i class="fa fa-angle-right"></i> {{patient.firstName}} {{patient.lastName}}
                                     </a>
                                 </h4>
@@ -98,7 +97,7 @@
                             <!-- Panel heading -->
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-alt3" href="" ng-click="goToPatientPage()">
+                                    <a data-toggle="collapse" data-parent="#accordion-alt3" href="" ng-click="goToPatientPage({doctorId: doctor.id})">
                                         <i class="fa fa-angle-right"></i> {{doctor.firstName}} {{doctor.lastName}}
                                     </a>
                                 </h4>
@@ -108,9 +107,6 @@
 
                     </div>
                     <!-- Accordion ends -->
-
-
-
                 </div>
             </div>
         </div>

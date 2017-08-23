@@ -67,15 +67,40 @@ angular.module('myApp.admitPatient', ['ngRoute', 'ngCookies'])
                 //console.log($scope.bedModel);
             });
         };
-        $scope.admitPatient = function() {
+
+
+        var requestId = {
+            patientId: $location.search().idPatient
+        };
+        admitPatientFactory.getPatient(requestId.patientId).then(function(response){
+            $scope.currentPatient = response.data;
+            console.log($scope.currentPatient)
+        });
+
+
+        $scope.change = function(a) {
+            $scope.value = $scope.currentDoctor;
+            console.log($scope.value);
+        };
+
+        $scope.changeB = function(a) {
+            $scope.value = $scope.currentBed;
+            console.log($scope.value);
+        };
+
+
+        $scope.admitPatient = function(patientId, doctorId, depName, bedId) {
+
+            patientId = $scope.currentPatient.id;
+            doctorId = $scope.currentDoctor.doctorId;
+            depName = $scope.selectedDep;
+            bedId = $scope.currentBed.bedId;
+
            alert($scope.currentDoctor);
             //return;
             $scope.admittedPatient = false;
             $scope.invalidPatientForm = false;
             var admissionObject = {
-                /*"department": $scope.currentDep,
-                "doctor": $scope.currentDoctor,
-                "bed": $scope.currentBed,*/
                 "diagnosis": $scope.diagnosis,
                 "treatmentInfo": $scope.treatmentInfo,
                 "dischargeDate": $scope.dischargeDate
@@ -85,7 +110,7 @@ angular.module('myApp.admitPatient', ['ngRoute', 'ngCookies'])
                 $scope.invalidQuestionForm = true;
                 $scope.addedQuestion = false;
             } else {
-                admitPatientFactory.admitPatient(admissionObject).then(
+                admitPatientFactory.admitPatient(patientId, doctorId, depName, bedId, admissionObject).then(
                     function(responseSuccess) {
                         console.log(responseSuccess);
                         $scope.admittedPatient = true;
@@ -98,7 +123,7 @@ angular.module('myApp.admitPatient', ['ngRoute', 'ngCookies'])
                     }
                 );
             }
-        }
+        };
 
 
         $scope.goToHome = function(){
@@ -108,6 +133,10 @@ angular.module('myApp.admitPatient', ['ngRoute', 'ngCookies'])
         $scope.goToUnadmittedPatients = function() {
             $location.path('/unadmittedPatients');
         };
+
+        $scope.goToCreateAccount = function() {
+            $location.path('/createAccount');
+        }
 
         $scope.today = function() {
             $scope.dt = new Date();

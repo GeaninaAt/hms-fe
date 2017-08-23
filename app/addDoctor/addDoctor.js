@@ -39,6 +39,10 @@ angular.module('myApp.addDoctor', ['ngRoute', 'ngCookies'])
 
         $scope.goToAddDoctor = function() {
             $location.path('/addDoctor');
+        };
+
+        $scope.goToCreateAccount = function() {
+            $location.path('/createAccount');
         }
 
         $scope.today = function() {

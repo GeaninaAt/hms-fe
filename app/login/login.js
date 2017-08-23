@@ -26,7 +26,7 @@ angular.module('myApp.login', ['ngRoute', 'ngCookies'])
                     alert("Some error occured during the authentication");
             }
         })
-    }
+    };
 
     $scope.goToRegisterPage = function(){
         $location.path("/register");

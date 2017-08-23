@@ -47,9 +47,8 @@
                         <li><a href="" ng-click="goToHome()">Home</a></li>
                         <li><a href="" ng-click="goToAddPatient()">Add Patient</a></li>
                         <li><a href="" ng-click="goToAddDoctor()">Add Doctor</a></li>
-                        <!--<li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>-->
                         <li><a href="" ng-click="goToUnadmittedPatients()">Unadmitted Patients</a></li>
+                        <li><a href="" ng-click="goToCreateAccount()">Create an account</a></li>
                     </ul>
                 </div>
             </div>
@@ -75,17 +74,16 @@
                     <!-- Accordion starts -->
                     <div class="panel-group" id="accordion-alt3">
                         <!-- Panel. Use "panel-XXX" class for different colors. Replace "XXX" with color. -->
-                        <div class="panel" ng-repeat="patient in unadmittedPatients">
+                        <div class="panel" ng-repeat = "patient in patients">
                             <!-- Panel heading -->
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-alt3" href="" ng-click="goToPatientPage()">
+                                    <a data-toggle="collapse" data-parent="#accordion-alt3" href="" ng-click="goToPatientPage({patientId:patient.id})">
                                         <i class="fa fa-angle-right"></i> {{patient.firstName}} {{patient.lastName}}
                                     </a>
                                 </h4>
                             </div>
                         </div>
-                    </div>
                     <!-- Accordion ends -->
                 </div>
             </div>

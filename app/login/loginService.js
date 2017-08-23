@@ -15,7 +15,7 @@ angular.module('myApp.login')
             var headers =  {
                 'Access-Control-Allow-Origin': '*',
                 authorization: "Basic " + btoa(username + ":" + password)
-            }
+            };
             /*var config = { headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': 'Basic ' + base64Credentials
@@ -23,14 +23,15 @@ angular.module('myApp.login')
             };*/
             return $http.get(url, headers).then(function(response) {
                 $cookies.put("userRole", response.data.role);
+                $cookies.put("userToken", base64Credentials);
                 return response;
 
             }, function(err) {
                 return err;
             });
-        }
+        };
 
         return {
             login: login
         }
-    }])
+    }]);

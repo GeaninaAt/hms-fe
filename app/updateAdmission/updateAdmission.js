@@ -1,70 +1,41 @@
+/**
+ * Created by gatomulesei on 8/23/2017.
+ */
 'use strict';
 
-angular.module('myApp.addExamination', ['ngRoute', 'ngCookies'])
+angular.module('myApp.updateAdmission', ['ngRoute', 'ngCookies'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/addExamination', {
-            templateUrl: 'addExamination/addExamination.html',
-            controller: 'addExaminationController'
+        $routeProvider.when('/updateAdmission', {
+            templateUrl: 'updateAdmission/updateAdmission.html',
+            controller: 'updateAdmissionController'
         });
     }])
 
-    .controller('addExaminationController', [ '$scope', '$location', '$cookies', 'addExaminationFactory', function($scope, $location, $cookies, addExaminationFactory) {
-
-
-        addExaminationFactory.getDoctors().then(function(response) {
-
-            $scope.doctorModel = [];
-            $scope.doctors = response.data;
-            for(var d in $scope.doctors) {
-                $scope.doctorModel.push({
-                    "doctorId":$scope.doctors[d].id,
-                    "firstName": $scope.doctors[d].firstName,
-                    "lastName": $scope.doctors[d].lastName
-                })
-            }
-            console.log($scope.doctorModel);
-        });
-
-        $scope.change = function(a) {
-            $scope.value = $scope.currentDoctor;
-            console.log($scope.value);
-        };
+    .controller('updateAdmissionController', [ '$scope', '$location', '$cookies', 'updateAdmissionFactory', function($scope, $location, $cookies, updateAdmissionFactory) {
 
 
         var requestId = {
-            patientId: $location.search().idPatient
+            admissionId: $location.search().idAdmission
         };
-        addExaminationFactory.getPatient(requestId.patientId).then(function(response){
-            $scope.currentPatient = response.data;
-            console.log($scope.currentPatient)
+        updateAdmissionFactory.getAdmission(requestId.admissionId).then(function(response){
+            $scope.currentAdmission = response.data;
+            console.log($scope.currentAdmission)
         });
 
 
-
-        $scope.addExamination = function(patientId, doctorId) {
-            console.log($scope.currentDoctor)
-            patientId = $scope.currentPatient.id;
-            doctorId = $scope.currentDoctor.doctorId;
-            var examinationObject = {
-                "date": $scope.date,
-                "time": $scope.time
+        $scope.updateAdmission = function(id) {
+            id = $scope.currentAdmission.id;
+            var admissionObject = {
+                "diagnosis": $scope.diagnosis,
+                "treatmentInfo": $scope.treatmentInfo,
+                "dischargeDate": $scope.dischargeDate
             };
-
-            addExaminationFactory.addExamination(patientId, doctorId, examinationObject).then(
-                function(responseSuccess) {
-                    $scope.addedDoctor = true;
-                    $scope.invalidDoctorForm = false;
-                    $scope.addDoctorForm.$setPristine();
-                },
-                function(responseError) {
-                    $scope.addedDoctor = false;
-                    $scope.invalidDoctorForm = false;
-                }
-            );
-
-        }
-
+            updateAdmissionFactory.updateAdmission(id, admissionObject).then(function(response) {
+                alert("Admission has been successfully updated!");
+                console.log($scope.currentAdmission);
+            })
+        };
 
         $scope.goToHome = function(){
             $location.path('/home');
@@ -72,6 +43,14 @@ angular.module('myApp.addExamination', ['ngRoute', 'ngCookies'])
 
         $scope.goToUnadmittedPatients = function() {
             $location.path('/unadmittedPatients');
+        };
+
+        $scope.goToAddPatient = function() {
+            $location.path('/addPatient');
+        };
+
+        $scope.goToAddDoctor = function() {
+            $location.path('/addDoctor');
         };
 
         $scope.goToCreateAccount = function() {
@@ -165,7 +144,5 @@ angular.module('myApp.addExamination', ['ngRoute', 'ngCookies'])
 
             return '';
         }
-
-
 
     }]);

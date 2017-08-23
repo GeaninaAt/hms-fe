@@ -31,8 +31,20 @@ angular.module('myApp.admitPatient')
             });
         };
 
-        var admitPatient = function(patientData) {
-            var url = 'http://localhost:8080/admissions/add/'; //+ response.data.id; //?
+        var getPatient = function(id) {
+            var url = "http://localhost:8080/patients/" + id;
+
+            return $http.get(url).then(function(response) {
+                return response;
+
+            }, function(err) {
+                return err;
+            });
+        };
+
+
+        var admitPatient = function(patientId, doctorId, depName, bedId, patientData) {
+            var url = 'http://localhost:8080/admissions/add/' + patientId + '/' + doctorId + '/' + depName + '/' + bedId;
             console.log(patientData);
             //we have to change this
             /*            var config = {
@@ -53,6 +65,7 @@ angular.module('myApp.admitPatient')
         return {
             getDoctors: getDoctors,
             getBeds: getBeds,
+            getPatient: getPatient,
             admitPatient: admitPatient
         }
     }]);

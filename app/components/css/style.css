@@ -920,6 +920,12 @@ padding: 10px 25px;border: 0;}
 .btn-theme {
 	color: #fff;
 }
+
+.btn-theme-del {
+	color: #fff;
+	background: darkred;
+}
+
 .btn-theme:hover {
 	color: #eee;
 }

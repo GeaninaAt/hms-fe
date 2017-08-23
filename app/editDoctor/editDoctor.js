@@ -1,48 +1,50 @@
 /**
- * Created by gatomulesei on 8/19/2017.
+ * Created by gatomulesei on 8/22/2017.
  */
 'use strict';
 
-angular.module('myApp.editPatient', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
+angular.module('myApp.editDoctor', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/editPatient', {
-            templateUrl: 'editPatient/editPatient.html',
-            controller: 'editPatientController'
+        $routeProvider.when('/editDoctor', {
+            templateUrl: 'editDoctor/editDoctor.html',
+            controller: 'editDoctorController'
         });
     }])
 
-    .controller('editPatientController', [ '$scope', '$location', '$cookies', 'editPatientFactory', function($scope, $location, $cookies, editPatientFactory) {
+    .controller('editDoctorController', [ '$scope', '$location', '$cookies', 'editDoctorFactory', function($scope, $location, $cookies, editDoctorFactory) {
 
         var requestId = {
-            patientId: $location.search().idPatient
+            doctorId: $location.search().idDoctor
         };
-        editPatientFactory.getPatient(requestId.patientId).then(function(response){
-            $scope.currentPatient = response.data;
-            console.log($scope.currentPatient)
+        editDoctorFactory.getDoctor(requestId.doctorId).then(function(response){
+            $scope.currentDoctor = response.data;
+            console.log($scope.currentDoctor)
         });
 
 
-        $scope.updatePatient = function(firstName, lastName, cnp, dateOfBirth, email, phoneNumber, bloodType, otherInfo) {
+        $scope.updateDoctor = function(firstName, lastName, cnp, dateOfBirth, email, phoneNumber, degree, position, departmentName) {
 
             $scope.addedPatient = false;
             $scope.invalidPatientForm = false;
-            var patientObject = {
+
+            var doctorObject = {
                 "firstName": firstName,
                 "lastName": lastName,
                 "cnp": cnp,
                 "dateOfBirth": dateOfBirth,
                 "email": email,
                 "phoneNumber": phoneNumber,
-                "bloodType": bloodType,
-                "otherInfo": otherInfo
+                "degree": degree,
+                "position": position,
+                "departmentName": departmentName
             };
 
             if ($scope.addPatientForm.$pristine || $scope.addPatientForm.$invalid) {
                 $scope.invalidQuestionForm = true;
                 $scope.addedQuestion = false;
             } else {
-                editPatientFactory.updatePatient(patientObject).then(
+                editDoctorFactory.updateDoctor(doctorObject).then(
                     function(responseSuccess) {
                         $scope.addedPatient = true;
                         $scope.invalidPatientForm = false;
@@ -54,7 +56,7 @@ angular.module('myApp.editPatient', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
                     }
                 );
             }
-        };
+        }
 
 
         $scope.goToHome = function(){
@@ -168,28 +170,26 @@ angular.module('myApp.editPatient', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
         $scope.form = {};
 
 
-        $scope.editPatient = function(patientId) {
-
-            patientId = $scope.currentPatient.id;
+        $scope.addPatient = function(firstName, lastName, cnp, dateOfBirth, email, phoneNumber, bloodType, otherInfo) {
 
             $scope.addedPatient = false;
             $scope.invalidPatientForm = false;
             var patientObject = {
-                "firstName": $scope.firstName,
-                "lastName": $scope.lastName,
-                "cnp": $scope.cnp,
-                "dateOfBirth": $scope.dateOfBirth,
-                "email": $scope.email,
-                "phoneNumber": $scope.phoneNumber,
-                "bloodType": $scope.bloodType,
-                "otherInfo": $scope.otherInfo
+                "firstName": firstName,
+                "lastName": lastName,
+                "cnp": cnp,
+                "dateOfBirth": dateOfBirth,
+                "email": email,
+                "phoneNumber": phoneNumber,
+                "bloodType": bloodType,
+                "otherInfo": otherInfo
             };
 
             if ($scope.addPatientForm.$pristine || $scope.addPatientForm.$invalid) {
                 $scope.invalidQuestionForm = true;
                 $scope.addedQuestion = false;
             } else {
-                editPatientFactory.updatePatient(patientId, patientObject).then(
+                addPatientFactory.addPatient(patientObject).then(
                     function(responseSuccess) {
                         $scope.addedPatient = true;
                         $scope.invalidPatientForm = false;
@@ -201,6 +201,6 @@ angular.module('myApp.editPatient', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
                     }
                 );
             }
-        };
+        }
 
     }]);

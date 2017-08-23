@@ -18,6 +18,12 @@ angular.module('myApp', [
     'myApp.admitPatient',
     'myApp.unadmittedPatients',
     'myApp.editPatient',
+    'myApp.doctorPage',
+    'myApp.editDoctor',
+    'myApp.addExamination',
+    'myApp.admissionsPage',
+    'myApp.updateAdmission',
+    'myApp.createAccount',
     'ui.bootstrap',
     'ngCookies'
 

@@ -28,9 +28,19 @@ angular.module('myApp.neurology', ['ngRoute', 'ngCookies'])
             $location.path('/addDoctor');
         }
 
-        $scope.goToPatientPage = function() {
-            $location.path('/patientPage');
+        $scope.goToCreateAccount = function() {
+            $location.path('/createAccount');
         }
+
+        $scope.goToPatientPage = function(id) {
+            if(id.patientId){
+                $location.path('/patientPage').search({idPatient: id.patientId});
+            }else if(id.doctorId){
+                $location.path('/doctorPage').search({idDoctor: id.doctorId});
+            }
+
+        };
+
 
         $scope.goToUnadmittedPatients = function() {
             $location.path('/unadmittedPatients');

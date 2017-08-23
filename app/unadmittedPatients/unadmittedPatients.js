@@ -14,11 +14,16 @@ angular.module('myApp.unadmittedPatients', ['ngRoute', 'ngCookies'])
 
     .controller('unadmittedPatientsController', [ '$scope', '$location', '$cookies', 'unadmittedPatientsFactory', function($scope, $location, $cookies, unadmittedPatientsFactory) {
 
+
+        $scope.goToPatientPage = function(id) {
+            $location.path('/patientPage').search({idPatient: id.patientId});
+        };
+
+
         unadmittedPatientsFactory.getUnadmittedPatients().then(function(response){
             console.log(response);
-            $scope.unadmittedPatients = response.data;
+            $scope.patients = response.data;
         });
-
 
         $scope.goToHome = function() {
             $location.path('/home');
@@ -32,12 +37,14 @@ angular.module('myApp.unadmittedPatients', ['ngRoute', 'ngCookies'])
             $location.path('/addDoctor');
         }
 
-        $scope.goToPatientPage = function() {
-            $location.path('/patientPage');
-        }
 
         $scope.goToUnadmittedPatients = function() {
             $location.path('/unadmittedPatients');
         }
+
+        $scope.goToCreateAccount = function() {
+            $location.path('/createAccount');
+        }
+
 
     }]);

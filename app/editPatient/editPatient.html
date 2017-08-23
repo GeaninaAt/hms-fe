@@ -44,9 +44,8 @@
                         <li><a href="" ng-click="goToHome()">Home</a></li>
                         <li><a href="" ng-click="goToAddPatient()">Add Patient</a></li>
                         <li><a href="" ng-click="goToAddDoctor()">Add Doctor</a></li>
-                        <!--<li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>-->
                         <li><a href="" ng-click="goToUnadmittedPatients()">Unadmitted Patients</a></li>
+                        <li><a href="" ng-click="goToCreateAccount()">Create an account</a></li>
                     </ul>
                 </div>
             </div>
@@ -78,33 +77,33 @@
                         <form id="addPatientForm" name = "addPatientForm" role="form" novalidate="novalidate">
                             <div class="form-group has-feedback">
                                 <label for="firstName">First Name*</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" ng-model="firstName">
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder={{currentPatient.firstName}} ng-model="firstName">
                                 <i class="fa fa-user form-control-feedback"></i>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="lastName">Last Name*</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" ng-model="lastName">
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder={{currentPatient.lastName}} ng-model="lastName">
                                 <i class="fa fa-user form-control-feedback"></i>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="cnp">CNP*</label>
-                                <input type="text" class="form-control" id="cnp" name="cnp" placeholder="" ng-model="cnp">
+                                <input type="text" class="form-control" id="cnp" name="cnp" placeholder={{currentPatient.cnp}} ng-model="cnp">
                                 <i class="fa fa-user form-control-feedback"></i>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="birthDate">Birth Date*</label>
-                                <input type="text" class="form-control" id="birthDate" name="birthDate" placeholder="" uib-datepicker-popup="{{format}}" ng-model="dateOfBirth" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">
+                                <input type="text" class="form-control" id="birthDate" name="birthDate" placeholder={{currentPatient.dateOfBirth}} uib-datepicker-popup="{{format}}" ng-model="dateOfBirth" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">
                                 <i class="fa fa-user form-control-feedback"></i>
                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="" ng-model="email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder={{currentPatient.email}} ng-model="email">
                                 <i class="fa fa-envelope form-control-feedback"></i>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="phoneNumber">Phone Number</label>
-                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="" ng-model="phoneNumber">
+                                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder={{currentPatient.phoneNumber}} ng-model="phoneNumber">
                                 <i class="fa fa-navicon form-control-feedback"></i>
                             </div>
                             <div class="form-group has-feedback">
@@ -116,10 +115,10 @@
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="message">Other Information</label>
-                                <textarea class="form-control" rows="6" id="message" name="message" placeholder="" ng-model="otherInfo"></textarea>
+                                <textarea class="form-control" rows="6" id="message" name="message" placeholder={{currentPatient.otherInfo}} ng-model="otherInfo"></textarea>
                                 <i class="fa fa-pencil form-control-feedback"></i>
                             </div>
-                            <input type="submit" ng-click="addPatient(firstName, lastName, cnp, dateOfBirth, email, phoneNumber, bloodType, otherInfo)" value="Submit" class="btn btn-default">
+                            <input type="submit" ng-click="editPatient()" value="Submit" class="btn btn-default">
                         </form>
                         <br>
                         <br>
