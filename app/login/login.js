@@ -12,9 +12,14 @@ angular.module('myApp.login', ['ngRoute', 'ngCookies'])
 .controller('loginController', ['$scope', '$http', 'loginFactory', '$location','$rootScope', '$cookies', function($scope, $http, loginFactory, $location, $rootScope, $cookies) {
     $scope.login = function(username, password){
         loginFactory.login(username, password).then(function(response){
+            console.log(response);
             switch(response.status){
                 case 200:
+                    /*var user = {
+                        "username" : response.
+                    }*/
                     $cookies.put("username", username);
+
                     $location.path("/home");
                     break;
                 case 401:

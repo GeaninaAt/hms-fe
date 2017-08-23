@@ -33,10 +33,19 @@
                         <li><a href="" ng-click="goToAddDoctor()">Add Doctor</a></li>
                         <li><a href="" ng-click="goToUnadmittedPatients()">Unadmitted Patients</a></li>
                         <li><a href="" ng-click="goToCreateAccount()">Create an account</a></li>
+
+                        <li><a href="" ng-click="callANurse()">Call nurse</a></li>
+
                     </ul>
                 </div>
+                <div ng-show="callNurse==true" class="pull-right col-sm-3">
+                    <input type="number" id="search" name="" ng-model="bedNo" placeholder="" required>
+                    <button class="btn btn-default" ng-click="callTheNurse(bedNo)">Call</button>
+                </div>
+
             </div>
         </div>
+
     </header>
     <!-- end header -->
     <section id="featured">
@@ -72,8 +81,21 @@
     </section>
     <section id="content">
 
+        <div class="col-md-5 pull-right" ng-show="alerta==true">
+            <div class="col-md-9" >
+                <div class="pricing-box-item" style="background:darkred">
+                    <div class="pricing-heading-" style="background:darkred">
+                    </div>
+                    <div class="pricing-terms" style="background: darkred">
+                        <h6>Patient in room {{roomCode}}, bed number {{bedNumber}} needs assistance!</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="container">
+
+
 
             <div class="row">
                 <div class="col-md-7">
@@ -92,6 +114,8 @@
                     <span class="post-meta-bottom"><a href="">More...</a></span></p>-->
 
                 </div>
+
+
                 <div class="col-xs-12 col-sm-12 col-md-5">
 
                 </div>

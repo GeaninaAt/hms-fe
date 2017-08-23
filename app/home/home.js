@@ -9,7 +9,7 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
     });
 }])
 
-.controller('homeController', [ '$scope', '$location', '$cookies', function($scope, $location, $cookies) {
+.controller('homeController', [ '$scope', '$location', '$cookies', '$rootScope','homeFactory','$interval', function($scope, $location, $cookies, $rootScope, homeFactory, $interval) {
 
    /* $scope.takeQuiz = function(type){
             $location.path('/quiz').search({ quizType: type });
@@ -21,6 +21,60 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
     $scope.adminAdd = function(){
         $location.path('/admin')
     }*/
+
+
+   $scope.alerta = false;
+
+   $scope.callNurse = false;
+
+   $scope.callANurse = function() {
+     $scope.callNurse = true;
+   };
+
+   $scope.callTheNurse = function(bedNo) {
+       alert(bedNo);
+
+       homeFactory.getBed(bedNo).then(function(response) {
+           console.log(response);
+           //$scope.bedNumber = response.data.number;
+           //$scope.roomCode = response.data.room.code
+
+           var patientInfo = {
+               "bedNo": response.data.number,
+               "roomCode": response.data.room.code
+           }
+
+           var now = new Date();
+
+           now.setSeconds(now.getSeconds() + 10);
+           $cookies.put('callNurse',JSON.stringify(patientInfo),{
+               expires: now
+           });
+       })
+   };
+
+
+    function checkForNotify(){
+        if($cookies.get('callNurse')){
+            var parsedObject = JSON.parse($cookies.get('callNurse'));
+            $scope.alerta = true;
+            $scope.bedNumber = parsedObject.bedNo;
+            $scope.roomCode = parsedObject.roomCode;
+        }else{
+            $scope.alerta = false;
+        }
+        // console.log(cookie); // logs 'blabla'
+    }
+
+    $interval(function(){
+         checkForNotify();
+    },3000);
+
+
+
+    function firstCtrl($scope) {
+        $scope.$on('callEvent', function(event, data) { console.log(data); });
+    }
 
    $scope.goToEmergencies = function() {
        $location.path('/emergencies');
