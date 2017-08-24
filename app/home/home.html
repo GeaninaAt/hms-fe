@@ -29,10 +29,10 @@
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li class="active" ng-click="goToHome()"><a href="">Home</a></li>
-                        <li><a href="" ng-click="goToAddPatient()">Add Patient</a></li>
-                        <li><a href="" ng-click="goToAddDoctor()">Add Doctor</a></li>
-                        <li><a href="" ng-click="goToUnadmittedPatients()">Unadmitted Patients</a></li>
-                        <li><a href="" ng-click="goToCreateAccount()">Create an account</a></li>
+                        <li><a href="" ng-show="isUser() == false" ng-click="goToAddPatient()">Add Patient</a></li>
+                        <li><a href="" ng-show="isUser() == false" ng-click="goToAddDoctor()">Add Doctor</a></li>
+                        <li><a href="" ng-show="isUser() == false" ng-click="goToUnadmittedPatients()">Unadmitted Patients</a></li>
+                        <li><a href="" ng-show="isUser() == false" ng-click="goToCreateAccount()">Create an account</a></li>
                         <li><a href="" ng-click="logout()">Log out</a></li>
 
                         <li><a href="" ng-show="isUser()==true" ng-click="callANurse()">Call nurse</a></li>
@@ -139,19 +139,19 @@
                         <div class="service-tab">
                             <!-- Nav tabs -->
                             <ul class="badhon-tab" role="tablist">
-                                <li class=""><a href="" aria-controls="home" role="tab" data-toggle="tab" ng-click = goToEmergencies()>
+                                <li class=""><a href="" aria-controls="home" role="tab" data-toggle="tab" ng-click = goToEmergencies() ng-show="isUser() == false" >
                                     <i class="fa fa-ambulance"></i>
                                     Emergencies
                                 </a></li>
-                                <li><a href="" aria-controls="home" role="tab" data-toggle="tab" ng-click = goToNeurology()>
+                                <li><a href="" aria-controls="home" role="tab" data-toggle="tab" ng-click = goToNeurology() ng-show="isUser() == false" >
                                     <i class="fa fa-medkit"></i>
                                     Neurology
                                 </a></li>
-                                <li><a href="" aria-controls="home" role="tab" data-toggle="tab" ng-click = goToUrology()>
+                                <li><a href="" aria-controls="home" role="tab" data-toggle="tab" ng-click = goToUrology() ng-show="isUser() == false" >
                                     <i class="fa fa-stethoscope"></i>
                                     Urology
                                 </a></li>
-                                <li><a href="" aria-controls="home" role="tab" data-toggle="tab" ng-click = goToCardiology()>
+                                <li><a href="" aria-controls="home" role="tab" data-toggle="tab" ng-click = goToCardiology() ng-show="isUser() == false" >
                                     <i class="fa fa-heart-o"></i>
                                     Cardiology
                                 </a></li>
