@@ -24,11 +24,11 @@ angular.module('myApp.login', ['ngRoute', 'ngCookies'])
                     break;
                 case 401:
                     $rootScope.failedLogin = true;
-                    alert("Unauthorized");
+                    alert("Unauthorized!");
                     break;
                 default:
                     $rootScope.failedLogin = true;
-                    alert("Some error occured during the authentication");
+                    alert("Incorrect username or password!");
             }
         })
     };

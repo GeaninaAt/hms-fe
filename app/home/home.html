@@ -33,9 +33,9 @@
                         <li><a href="" ng-click="goToAddDoctor()">Add Doctor</a></li>
                         <li><a href="" ng-click="goToUnadmittedPatients()">Unadmitted Patients</a></li>
                         <li><a href="" ng-click="goToCreateAccount()">Create an account</a></li>
+                        <li><a href="" ng-click="logout()">Log out</a></li>
 
-                        <li><a href="" ng-click="callANurse()">Call nurse</a></li>
-
+                        <li><a href="" ng-show="isUser()==true" ng-click="callANurse()">Call nurse</a></li>
                     </ul>
                 </div>
                 <div ng-show="callNurse==true" class="pull-right col-sm-3">

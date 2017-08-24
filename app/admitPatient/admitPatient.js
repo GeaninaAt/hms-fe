@@ -91,15 +91,15 @@ angular.module('myApp.admitPatient', ['ngRoute', 'ngCookies'])
 
         $scope.admitPatient = function(patientId, doctorId, depName, bedId) {
 
+            $scope.addedPatient = false;
+            $scope.invalidPatientForm = false;
+
             patientId = $scope.currentPatient.id;
             doctorId = $scope.currentDoctor.doctorId;
             depName = $scope.selectedDep;
             bedId = $scope.currentBed.bedId;
 
-           alert($scope.currentDoctor);
             //return;
-            $scope.admittedPatient = false;
-            $scope.invalidPatientForm = false;
             var admissionObject = {
                 "diagnosis": $scope.diagnosis,
                 "treatmentInfo": $scope.treatmentInfo,
@@ -113,12 +113,12 @@ angular.module('myApp.admitPatient', ['ngRoute', 'ngCookies'])
                 admitPatientFactory.admitPatient(patientId, doctorId, depName, bedId, admissionObject).then(
                     function(responseSuccess) {
                         console.log(responseSuccess);
-                        $scope.admittedPatient = true;
+                        $scope.addedPatient = true;
                         $scope.invalidPatientForm = false;
                         $scope.addPatientForm.$setPristine();
                     },
                     function(responseError) {
-                        $scope.admittedPatient = false;
+                        $scope.addedPatient = false;
                         $scope.invalidPatientForm = false;
                     }
                 );

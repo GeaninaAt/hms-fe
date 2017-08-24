@@ -43,6 +43,8 @@ angular.module('myApp.addExamination', ['ngRoute', 'ngCookies'])
 
 
         $scope.addExamination = function(patientId, doctorId) {
+            $scope.addedPatient = false;
+            $scope.invalidPatientForm = false;
             console.log($scope.currentDoctor)
             patientId = $scope.currentPatient.id;
             doctorId = $scope.currentDoctor.doctorId;
@@ -53,13 +55,13 @@ angular.module('myApp.addExamination', ['ngRoute', 'ngCookies'])
 
             addExaminationFactory.addExamination(patientId, doctorId, examinationObject).then(
                 function(responseSuccess) {
-                    $scope.addedDoctor = true;
-                    $scope.invalidDoctorForm = false;
-                    $scope.addDoctorForm.$setPristine();
+                    $scope.addedPatient = true;
+                    $scope.invalidPatientForm = false;
+                    $scope.examForm.$setPristine();
                 },
                 function(responseError) {
-                    $scope.addedDoctor = false;
-                    $scope.invalidDoctorForm = false;
+                    $scope.addedPatient = false;
+                    $scope.invalidPatientForm = false;
                 }
             );
 

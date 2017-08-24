@@ -14,18 +14,6 @@ angular.module('myApp.addPatient', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
 
     .controller('addPatientController', [ '$scope', '$location', '$cookies', 'addPatientFactory', function($scope, $location, $cookies, addPatientFactory) {
 
-        //$scope.addPatientForm.$setPristine();
-        /* $scope.takeQuiz = function(type){
-         $location.path('/quiz').search({ quizType: type });
-         }
-
-         $scope.userRole = $cookies.get("userRole");
-         console.log($scope.userRole);
-
-         $scope.adminAdd = function(){
-         $location.path('/admin')
-         }*/
-
         $scope.goToHome = function(){
             $location.path('/home');
         }

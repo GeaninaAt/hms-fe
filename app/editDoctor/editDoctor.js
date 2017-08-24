@@ -170,11 +170,11 @@ angular.module('myApp.editDoctor', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
         $scope.form = {};
 
 
-        $scope.addPatient = function(firstName, lastName, cnp, dateOfBirth, email, phoneNumber, bloodType, otherInfo) {
+        $scope.updateDoctor = function(firstName, lastName, cnp, dateOfBirth, email, phoneNumber, bloodType, otherInfo) {
 
             $scope.addedPatient = false;
             $scope.invalidPatientForm = false;
-            var patientObject = {
+            var doctorObject = {
                 "firstName": firstName,
                 "lastName": lastName,
                 "cnp": cnp,
@@ -189,7 +189,7 @@ angular.module('myApp.editDoctor', ['ngRoute', 'ui.bootstrap', 'ngCookies'])
                 $scope.invalidQuestionForm = true;
                 $scope.addedQuestion = false;
             } else {
-                addPatientFactory.addPatient(patientObject).then(
+                editDoctorFactory.updateDoctor(doctorObject).then(
                     function(responseSuccess) {
                         $scope.addedPatient = true;
                         $scope.invalidPatientForm = false;

@@ -31,8 +31,49 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
      $scope.callNurse = true;
    };
 
+
+   $scope.isUser = function() {
+       $scope.userRole = $cookies.get("userRole");
+       console.log($scope.userRole);
+       if($scope.userRole == "ROLE_USER") {
+           return true;
+       } else {
+           return false;
+       }
+   };
+
+    $scope.isAdmin = function() {
+        $scope.userRole = $cookies.get("userRole");
+        console.log($scope.userRole);
+        if($scope.userRole == "ROLE_ADMIN") {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    $scope.isDoctor = function() {
+        $scope.userRole = $cookies.get("userRole");
+        console.log($scope.userRole);
+        if($scope.userRole == "ROLE_DOCTOR") {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    $scope.isNurse = function() {
+        $scope.userRole = $cookies.get("userRole");
+        console.log($scope.userRole);
+        if($scope.userRole == "ROLE_NURSE") {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
    $scope.callTheNurse = function(bedNo) {
-       alert(bedNo);
+       //alert(bedNo);
 
        homeFactory.getBed(bedNo).then(function(response) {
            console.log(response);
@@ -42,11 +83,11 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
            var patientInfo = {
                "bedNo": response.data.number,
                "roomCode": response.data.room.code
-           }
+           };
 
            var now = new Date();
 
-           now.setSeconds(now.getSeconds() + 10);
+           now.setSeconds(now.getSeconds() + 200);
            $cookies.put('callNurse',JSON.stringify(patientInfo),{
                expires: now
            });
@@ -63,7 +104,6 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
         }else{
             $scope.alerta = false;
         }
-        // console.log(cookie); // logs 'blabla'
     }
 
     $interval(function(){
@@ -72,39 +112,41 @@ angular.module('myApp.home', ['ngRoute', 'ngCookies'])
 
 
 
-    function firstCtrl($scope) {
-        $scope.$on('callEvent', function(event, data) { console.log(data); });
-    }
-
    $scope.goToEmergencies = function() {
        $location.path('/emergencies');
-   }
+   };
 
     $scope.goToNeurology = function() {
         $location.path('/neurology');
-    }
+    };
 
     $scope.goToUrology = function() {
         $location.path('/urology');
-    }
+    };
 
     $scope.goToCardiology = function() {
         $location.path('/cardiology');
-    }
+    };
 
     $scope.goToAddPatient = function() {
        $location.path('/addPatient');
-    }
+    };
 
     $scope.goToAddDoctor = function() {
        $location.path('/addDoctor');
-    }
+    };
 
     $scope.goToUnadmittedPatients = function() {
        $location.path('/unadmittedPatients');
-    }
+    };
 
     $scope.goToCreateAccount = function() {
        $location.path('/createAccount');
-    }
+    };
+
+    $scope.logout = function() {
+        sessionStorage.clear();
+        $location.path('/login');
+    };
+
 }]);

@@ -22,7 +22,7 @@ angular.module('myApp.login')
             }
             };*/
             return $http.get(url, headers).then(function(response) {
-                $cookies.put("userRole", response.data.role);
+                $cookies.put("userRole", response.data.authorities[0].authority);
                 $cookies.put("userToken", base64Credentials);
                 return response;
 

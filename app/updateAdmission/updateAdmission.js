@@ -25,6 +25,9 @@ angular.module('myApp.updateAdmission', ['ngRoute', 'ngCookies'])
 
 
         $scope.updateAdmission = function(id) {
+            $scope.addedPatient = false;
+            $scope.invalidPatientForm = false;
+
             id = $scope.currentAdmission.id;
             var admissionObject = {
                 "diagnosis": $scope.diagnosis,
@@ -32,7 +35,8 @@ angular.module('myApp.updateAdmission', ['ngRoute', 'ngCookies'])
                 "dischargeDate": $scope.dischargeDate
             };
             updateAdmissionFactory.updateAdmission(id, admissionObject).then(function(response) {
-                alert("Admission has been successfully updated!");
+                $scope.addedPatient = true;
+                $scope.invalidPatientForm = false;
                 console.log($scope.currentAdmission);
             })
         };

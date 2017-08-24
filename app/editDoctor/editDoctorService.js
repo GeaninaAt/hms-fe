@@ -25,7 +25,7 @@ angular.module('myApp.doctorPage')
 
 
         var updateDoctor = function(doctorData) {
-            var url = 'http://localhost:8080/doctors/update' + requestId.doctorId;
+            var url = 'http://localhost:8080/doctors/update/' + requestId.doctorId;
             console.log(doctorData);
             //we have to change this
             /*            var config = {

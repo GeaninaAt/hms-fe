@@ -73,7 +73,7 @@
                         <strong>Error!</strong> There was an error sending your message.
                     </div>
                     <div class="contact-form">
-                        <form id="contact-form" role="form" name="admitPatientForm" novalidate="novalidate">
+                        <form id="contact-form" role="form" name="examForm" novalidate="novalidate">
                             <div class="form-group has-feedback">
                                 <label for="getDoc">Doctor</label>
                                 <select class="form-control" id="getDoc"  ng-model="currentDoctor" ng-change="change(currentDoctor)" data-ng-options="doctor as doctor.firstName + ' ' + doctor.lastName for doctor in doctorModel" value="doctor.lastName"   >
@@ -95,6 +95,14 @@
 
                             <input type="submit" value="Submit" class="btn btn-default" ng-click="addExamination(date, time)">
                         </form>
+                        <br>
+                        <br>
+                        <div class="alert alert-success" ng-show="addedPatient == true">
+                            <strong>Success!</strong> The examination has been sucessfully programmed.
+                        </div>
+                        <div class="alert alert-warning" ng-show="invalidPatientForm == true">
+                            <strong>Warning!</strong> Please complete all fields.
+                        </div>
                     </div>
                 </div>
             </div>
